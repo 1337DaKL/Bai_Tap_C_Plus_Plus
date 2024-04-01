@@ -1,0 +1,1 @@
+{"name":"Local: 3003timmax","url":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\codePTIT\\3003timmax.cpp","tests":[{"id":1710655104143,"input":"2\n5\n5 3 2 4 1\n3\n1 2 3","output":"40\n8"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\codePTIT\\3003timmax.cpp","group":"local","local":true}
