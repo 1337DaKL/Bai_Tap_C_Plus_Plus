@@ -3,8 +3,8 @@ using namespace std;
 #define ll long long
 int main()
 {
-    ll n, m;
-    cin >> n >> m;
+    ll n, k;
+    cin >> n >> k;
     ll a[n];
     for (auto &it : a)
     {
@@ -12,18 +12,18 @@ int main()
     }
     map<ll, ll> mp;
     ll dem = 0, tong = 0;
-    for (int i = 0; i < n; i++)
+    for (ll i = 0; i < n; i++)
     {
         tong += a[i];
-        if (mp.count(tong - m))
+        if (tong % k == 0 && mp.count(tong / k))
         {
-            dem += mp[tong - m];
+            dem += mp[tong / k];
         }
-        if (tong == m)
+        if (tong % k == 0)
         {
             dem++;
         }
-        mp[tong]++;
+        mp[a[i]]++;
     }
     cout << dem << endl;
 }

@@ -10,15 +10,12 @@ int main()
         cin >> it;
     }
     sort(a, a + n, greater<int>());
-    int dem = 0, mino = INT_MAX;
+    long long tong = 0;
     for (int i = 0; i < n; i++)
     {
-        if (mino == 0)
-        {
+        if (a[i] - i <= 0)
             break;
-        }
-        dem++;
-        mino = min(mino - 1, a[i]);
+        tong += (a[i] - i);
     }
-    cout << dem << endl;
+    cout << tong;
 }

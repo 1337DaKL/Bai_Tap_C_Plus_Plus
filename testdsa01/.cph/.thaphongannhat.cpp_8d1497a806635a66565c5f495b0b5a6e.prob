@@ -1,0 +1,1 @@
+{"name":"Local: thaphongannhat","url":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\testdsa01\\thaphongannhat.cpp","tests":[{"id":1711889344805,"input":"6\n1 3 7 2 4 6","output":"0 1 2 1 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\testdsa01\\thaphongannhat.cpp","group":"local","local":true}
