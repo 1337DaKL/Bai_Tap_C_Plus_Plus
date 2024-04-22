@@ -2,12 +2,12 @@
 using namespace std;
 #define ll long long
 ll a[1000005], n, m;
-ll tg(ll n)
+ll tg(ll k)
 {
     ll cnt = 0;
     for (int i = 0; i < n; i++)
     {
-        cnt += n / a[i];
+        cnt += k / a[i];
     }
     return cnt;
 }

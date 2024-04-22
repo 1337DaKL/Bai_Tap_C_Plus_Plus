@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, k, a[100000], ok;
+int a[1000], b[1000], n, m, k, ok = 1;
+void khoitao()
+{
+    for (int i = 1; i <= n; i++)
+    {
+        a[i] = i;
+    }
+}
 void sinh()
 {
     int i = k;
@@ -23,28 +30,27 @@ void sinh()
 }
 int main()
 {
-    int m;
     cin >> m >> k;
-    ok = 1;
-    int b[n + 1];
     set<int> mp;
-    for (int i = 1; i <= m; i++)
+    while (m--)
     {
-        cin >> b[i];
-        mp.insert(b[i]);
-    }
-    int dem = 0;
-    for (auto it : mp)
-    {
-        dem++;
-        a[dem] = it;
+        int x;
+        cin >> x;
+        mp.insert(x);
     }
     n = mp.size();
+    int ii = 1;
+    for (auto it : mp)
+    {
+        b[ii] = it;
+        ii++;
+    }
+    khoitao();
     while (ok)
     {
         for (int i = 1; i <= k; i++)
         {
-            cout << a[i] << " ";
+            cout << b[a[i]] << " ";
         }
         cout << endl;
         sinh();

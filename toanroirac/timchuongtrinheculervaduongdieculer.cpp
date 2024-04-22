@@ -1,53 +1,70 @@
-#include <iostream>
-#include <set>
-#include <stack>
-#include <vector>
+
+#include <bits/stdc++.h>
 using namespace std;
-int n, m, a[1000][1000];
-void nhap()
+
+int n, m;
+string ans;
+vector<int> w;
+vector<int> v;
+vector<vector<int>> f;
+
+void trace(int n, int k)
+{
+    if (n == 0)
+        return;
+    if (f[n][k] == f[n - 1][k])
+        trace(n - 1, k);
+    else
+    {
+        trace(n - 1, k - w[n]);
+        ans[n - 1] = '1';
+    }
+}
+
+void testCase()
 {
     cin >> n >> m;
-    for (int i = 1; i <= n; i++)
+    w.resize(n + 1);
+    v.resize(n + 1);
+    ans.resize(n, '0');
+    f.resize(n + 1, vector<int>(m + 1, 0));
+
+    for (int i = 1; i <= n; ++i)
     {
-        for (int j = 1; j <= n; j++)
+        cin >> v[i];
+    }
+    for (int i = 1; i <= n; ++i)
+    {
+        cin >> w[i];
+    }
+
+    for (int i = 1; i <= n; ++i)
+    {
+        for (int j = 1; j <= m; ++j)
         {
-            cin >> a[i][j];
+            if (j >= w[i])
+                f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i]);
+            else
+                f[i][j] = f[i - 1][j];
         }
     }
+    cout << f[n][m] << endl;
+    trace(n, m);
+    for (char i : ans)
+        cout << i << ' ';
 }
-stack<int> st;
-vector<int> ec;
-void eculer(int i)
-{
-    st.push(i);
-    while (!st.empty())
-    {
-        int x = st.top();
-        int j;
-        for (j = 1; j <= n; j++)
-        {
-            if (a[x][j] == 1)
-                break;
-        }
-        if (j == n + 1)
-        {
-            st.pop();
-            ec.push_back(x);
-        }
-        else
-        {
-            a[x][j] = 0;
-            a[j][x] = 0;
-            eculer(j);
-        }
-    }
-}
+
 int main()
 {
-    nhap();
-    eculer(m);
-    for (auto it = ec.rbegin(); it != ec.rend(); it++)
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int T = 1;
+    while (T--)
     {
-        cout << *it << " ";
+        testCase();
+        cout << "\n";
     }
+    return 0;
 }

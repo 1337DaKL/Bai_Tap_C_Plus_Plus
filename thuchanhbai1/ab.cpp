@@ -1,74 +1,57 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n;
-char c;
-string s;
-vector<string> res;
-void solve()
+int a[1000], n, k, ok = 1;
+void khoitao()
 {
-    int maxX = 0, maxO = 0;
-    for (int i = 0; i < s.size(); i++)
+    for (int i = 1; i <= k; i++)
     {
-        if (s[i] == 'X')
-        {
-            int len = 1;
-            while (i + 1 < s.size() && s[i + 1] == 'X')
-            {
-                len++;
-                i++;
-            }
-            maxX = max(maxX, len);
-        }
-        else if (s[i] == 'O')
-        {
-            int len = 1;
-            while (i + 1 < s.size() && s[i + 1] == 'O')
-            {
-                len++;
-                i++;
-            }
-            maxO = max(maxO, len);
-        }
-    }
-    if ((c == 'X' && maxX >= 5 && maxX > maxO) || (c == '0' && maxO >= 5 && maxO > maxX))
-    {
-        res.push_back(s);
+        a[i] = i;
     }
 }
-void Try(int i)
+void sinh()
 {
-    for (int j = 0; j <= 1; j++)
+    int i = k;
+    while (i >= 1 && a[i] == n - k + i)
     {
-        if (j == 0)
-            s[i] = 'O';
-        else
-            s[i] = 'X';
-
-        if (i == n - 1)
-            solve();
-        else
-            Try(i + 1);
+        i--;
     }
-}
-void testCase()
-{
-    cin >> n >> c;
-    res.clear();
-    s.resize(n);
-    Try(0);
-    for (string i : res)
+    if (i == 0)
     {
-        cout << i << endl;
+        ok = 0;
+    }
+    else
+    {
+        a[i]++;
+        for (int j = i + 1; j <= k; j++)
+        {
+            a[j] = a[j - 1] + 1;
+        }
     }
 }
 int main()
 {
-    int T = 1;
-    cin >> T;
-    while (T--)
+    cin >> n >> k;
+    khoitao();
+    set<string> okk;
+    for (int i = 0; i < n; i++)
     {
-        testCase();
-        cout << endl;
+        string s;
+        cin >> s;
+        okk.insert(s);
     }
-    return 0;
+    vector<string> mp;
+    for (auto it : okk)
+    {
+        mp.push_back(it);
+    }
+    n = mp.size();
+    while (ok)
+    {
+        for (int i = 1; i <= k; i++)
+        {
+            cout << mp[a[i] - 1] << " ";
+        }
+        cout << endl;
+        sinh();
+    }
 }

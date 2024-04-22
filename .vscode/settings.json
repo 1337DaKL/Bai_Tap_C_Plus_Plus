@@ -4,6 +4,13 @@
         "bitset": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "cmath": "cpp",
+        "vector": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "stacktrace": "cpp"
     }
 }
