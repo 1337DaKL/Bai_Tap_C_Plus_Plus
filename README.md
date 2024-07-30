@@ -3,9 +3,8 @@
 - 🌱 I’m currently learning Backend
 - 📫 How to reach me: luongtrinh2k3ndad@gmail.com
 
--<a href="https://www.instagram.com/1337dakl/"><img src="https://img.shields.io/badge/instagram%20@1337dakl-DD2476?style=for-the-badge&logo=instagram&logoColor=white"/></a>
-
-- <a href="https://www.facebook.com/1337.DaKL.03"><img src="https://img.shields.io/badge/facebook%20@1337.DaKL.03-344E86?style=for-the-badge&logo=facebook&logoColor=white"/></a>
+<a href="https://www.instagram.com/1337dakl/"><img src="https://img.shields.io/badge/instagram%20@1337dakl-DD2476?style=for-the-badge&logo=instagram&logoColor=white"/></a>
+<a href="https://www.facebook.com/1337.DaKL.03"><img src="https://img.shields.io/badge/facebook%20@1337.DaKL.03-344E86?style=for-the-badge&logo=facebook&logoColor=white"/></a>
 
 
 
