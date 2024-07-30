@@ -4,45 +4,36 @@ int main()
 {
     int n;
     cin >> n;
-    map<int, int> mp;
+    int a[5] = {};
     while (n--)
     {
         int x;
         cin >> x;
-        mp[x]++;
+        a[x]++;
     }
-    int dem = 0;
-    dem += mp[4];
-    dem += mp[2] / 2;
-    mp[2] = mp[2] % 2;
-    int x = min(mp[1], mp[3]);
-    dem += x;
-    if (mp[1] == x)
-    {
-        mp[1] = 0;
-    }
-    if (mp[3] == x)
-    {
-        mp[3] = 0;
-    }
-    dem += mp[3];
-    if (mp[2] == 1)
-    {
-        mp[1] -= 2;
-        dem++;
-        while (mp[1] > 0)
-        {
-            dem++;
-            mp[1] -= 4;
-        }
-    }
+    int cnt = a[4] + a[3];
+    if (a[1] <= a[3])
+        a[1] = 0;
     else
+        a[1] -= a[3];
+    cnt += a[2] / 2;
+    if (a[2] % 2 == 1)
     {
-        while (mp[1] > 0)
+        cnt++;
+        if (a[1] >= 2)
         {
-            dem++;
-            mp[1] -= 4;
+            a[1] -= 2;
+        }
+        else
+        {
+            a[1] = 0;
+            a[2] = 0;
         }
     }
-    cout << dem;
+    cnt += (a[1] / 4);
+    if (a[1] % 4 != 0)
+    {
+        cnt++;
+    }
+    cout << cnt << endl;
 }

@@ -11,6 +11,12 @@
         "list": "cpp",
         "string": "cpp",
         "string_view": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "sstream": "cpp",
+        "regex": "cpp",
+        "array": "cpp",
+        "any": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }

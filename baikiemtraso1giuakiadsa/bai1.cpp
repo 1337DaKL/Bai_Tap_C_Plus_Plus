@@ -1,48 +1,59 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
+#include <cstdint>
+
 using namespace std;
-#define ll long long
-ll f[47];
-ll sl[47];
-void fib()
+
+// Hàm kiểm tra xem số có nằm trong phạm vi từ 32-bit đến 64-bit không
+bool is_valid_number(const string &str)
 {
-    f[0] = 0;
-    f[1] = 1;
-    sl[0] = 1;
-    sl[1] = 1;
-    for (int i = 2; i <= 46; i++)
+    if (str.empty())
+        return false;
+    try
     {
-        f[i] = f[i - 1] + f[i - 2];
-        sl[i] = sl[i - 2] + sl[i - 1];
+        uint64_t number = stoull(str);
+        return (number > 2147483647 && number <= 9223372036854775807ULL);
+    }
+    catch (const out_of_range &)
+    {
+        return false;
     }
 }
-ll dem = 0;
-void fibo(int n, int k)
-{
-    if (k == sl[n])
-    {
-        dem += f[n];
-    }
-    else if (k <= sl[n - 1])
-    {
-        fibo(n - 1, k);
-    }
-    else
-    {
-        dem += f[n - 1];
-        fibo(n - 2, k - sl[n - 1]);
-    }
-}
+
 int main()
 {
-    int t;
-    cin >> t;
-    fib();
-    while (t--)
+    string line;
+    uint64_t total_sum = 0;
+
+    while (getline(cin, line))
     {
-        int n, k;
-        cin >> n >> k;
-        fibo(n, k);
-        cout << dem << endl;
-        dem = 0;
+        string number_str;
+        for (char c : line)
+        {
+            if (isdigit(c))
+            {
+                number_str += c; // Xây dựng chuỗi số
+            }
+            else
+            {
+                if (!number_str.empty())
+                {
+                    // Khi gặp ký tự không phải số, kiểm tra chuỗi số đã tích lũy
+                    if (is_valid_number(number_str))
+                    {
+                        total_sum += stoull(number_str);
+                    }
+                    number_str.clear();
+                }
+            }
+        }
+        // Kiểm tra chuỗi số cuối cùng nếu có
+        if (!number_str.empty() && is_valid_number(number_str))
+        {
+            total_sum += stoull(number_str);
+        }
     }
+
+    cout << total_sum << endl;
+    return 0;
 }

@@ -1,0 +1,1 @@
+{"name":"Local: DSA07012","url":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\codePTIT\\DSA07012.cpp","tests":[{"id":1714902749674,"input":"2\n\nABC++\n\nAB*C+","output":"(A+(B+C))\n((A*B)+C)"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\luong\\OneDrive\\Documents\\BaitapC++\\codePTIT\\DSA07012.cpp","group":"local","local":true}

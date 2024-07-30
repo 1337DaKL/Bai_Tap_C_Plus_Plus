@@ -4,27 +4,24 @@ int main()
 {
     string s;
     cin >> s;
+    stack<char> mp;
     int dem = 0;
     for (int i = 0; i < s.size(); i++)
     {
-        if (s[i] == ')')
-        {
-            dem++;
-        }
         if (s[i] == '(')
         {
-            break;
+            mp.push(s[i]);
         }
-    }
-    for (int i = s.size() - 1; i >= 0; i--)
-    {
-        if (s[i] == '(')
+        else
         {
-            dem++;
-        }
-        if (s[i] == ')')
-        {
-            break;
+            if (mp.size() == 0)
+            {
+                dem++;
+            }
+            else
+            {
+                mp.pop();
+            }
         }
     }
     cout << dem << endl;

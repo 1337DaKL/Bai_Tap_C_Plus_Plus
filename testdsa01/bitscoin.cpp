@@ -1,41 +1,60 @@
 #include <bits/stdc++.h>
 using namespace std;
+int cap(char x)
+{
+    if (x == '^')
+        return 5;
+    if (x == '*' || x == '/')
+        return 4;
+    if (x == '+' || x == '-')
+        return 3;
+    return 1;
+}
 int main()
 {
-    map<string, string> mp;
-    int n;
-    cin >> n;
-    cin.ignore();
-    while (n--)
+    int test;
+    cin >> test;
+    while (test--)
     {
-        string x, y;
-        getline(cin, x);
-        getline(cin, y);
-        mp.insert({y, x});
-    }
-    int m;
-    cin >> m;
-    while (m--)
-    {
-        string x, y;
-        int z;
-        cin >> x >> y >> z;
-        if (mp.find(x) != mp.end())
+        stack<char> st;
+        string s;
+        string res = "";
+        cin >> s;
+        for (auto it : s)
         {
-            cout << mp[x];
+            if (it == '(')
+            {
+                st.push(it);
+            }
+            else if (it == ')')
+            {
+                while (st.top() != '(')
+                {
+                    res += st.top();
+                    st.pop();
+                }
+                st.pop();
+            }
+            else if (it == '+' || it == '-' || it == '*' || it == '/' || it == '^')
+            {
+                if (!st.empty() && cap(st.top()) >= cap(it))
+                {
+                    res += st.top();
+                    st.pop();
+                }
+                st.push(it);
+            }
+            else
+            {
+                res += it;
+            }
         }
-        else
+        while (!st.empty())
         {
-            cout << "Unknown wallet";
+            if (st.top() != '(')
+                res += st.top();
+            st.pop();
         }
-        cout << " send " << z << " bitcoin to ";
-        if (mp.find(y) != mp.end())
-        {
-            cout << mp[y] << endl;
-        }
-        else
-        {
-            cout << "Unknown wallet" << endl;
-        }
+        cout << res << endl;
     }
 }

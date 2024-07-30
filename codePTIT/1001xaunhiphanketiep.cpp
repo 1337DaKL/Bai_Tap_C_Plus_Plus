@@ -1,35 +1,44 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
+    int test;
+    cin >> test;
+    while (test--)
     {
-        string s;
-        cin >> s;
-        vector<int> mp;
-        for (auto it : s)
+        int n, m;
+        cin >> n >> m;
+        int a[n + 1][m + 1];
+        for (int i = 1; i <= n; i++)
         {
-            mp.push_back(it - '0');
+            for (int j = 1; j <= m; j++)
+            {
+                cin >> a[i][j];
+            }
         }
-        int i = mp.size() - 1;
-        while (i >= 0 && mp[i] == 1)
+        int b[n + 1][m + 1];
+        for (int i = 1; i <= n; i++)
         {
-            mp[i] = 0;
-            i--;
+            for (int j = 1; j <= m; j++)
+            {
+                if (i == 1 && j == 1)
+                {
+                    b[i][j] = a[i][j];
+                }
+                else if (i == 1)
+                {
+                    b[i][j] = a[i][j] + b[i][j - 1];
+                }
+                else if (j == 1)
+                {
+                    b[i][j] = a[i][j] + b[i - 1][j];
+                }
+                else
+                {
+                    b[i][j] = a[i][j] + min(b[i - 1][j - 1], min(b[i - 1][j], b[i][j - 1]));
+                }
+            }
         }
-        if (i >= 0)
-        {
-            mp[i] = 1;
-        }
-        for (int ii = 0; ii < mp.size(); ii++)
-        {
-            cout << mp[ii];
-        }
-        cout << endl;
+        cout << b[n][m] << endl;
     }
-    return 0;
 }
